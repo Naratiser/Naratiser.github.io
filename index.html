@@ -45,7 +45,7 @@
             color: white;
             /* position: fixed; */
             bottom: 0;
-            width: 100%;
+            width: auto;
 
         }
 
@@ -95,6 +95,10 @@
                 text-align: left;
                 width: 100%;
                 box-sizing: border-box;
+            }
+            .img{
+                max-width: calc(50%);
+                max-height: calc(50%);
             }
 
         }
@@ -176,6 +180,7 @@
 
         .mx-1 {
             margin-top: 10px;
+            padding: 25px;
         }
 
         .border-radius {
@@ -251,9 +256,6 @@
 
 
 
-        .img {
-            width: 100%;
-        }
 
         .dropdown {
             float: left;
@@ -393,7 +395,7 @@
     </div>
     <div class="section4 flex bg">
         <h1 class="Bebas font-h1 color-black">Examples</h1>
-        <img class="border-radius glow hidden" src="/img/design.png" alt="Design">
+        <img class="border-radius glow hidden img" src="/img/design.png" alt="Design">
         <br>
     </div>
     <br>

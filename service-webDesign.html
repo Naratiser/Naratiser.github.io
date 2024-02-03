@@ -46,7 +46,7 @@
         color: white;
         /* position: fixed;  */
         bottom: 0;
-        width: 100%;
+        width: auto;
 
 
     }
@@ -98,10 +98,16 @@
             width: 100%;
             box-sizing: border-box;
         }
-        .why-grid-item{
-          grid-column: 1;
-      }
 
+        .why-grid-item {
+            grid-column: 1;
+        }
+
+        .services-offer {
+            justify-content: center;
+            /* max-width: calc(100%);
+            max-height: calc(50%); */
+        }
     }
 
     #img-logo {
@@ -179,9 +185,11 @@
     .mx-1 {
         margin-top: 10px;
     }
+
     .font-h2 {
         font-size: 50px;
     }
+
     .font-h3 {
         font-size: 35px;
     }
@@ -319,20 +327,21 @@
         transition: 0.2s;
     }
 
-    
-    ::-moz-selection {
-            /* Code for Firefox */
-            color: black;
-            background: gray;
-        }
 
-        ::selection {
-            color: black;
-            background: gray;
-        }
+    ::-moz-selection {
+        /* Code for Firefox */
+        color: black;
+        background: gray;
+    }
+
+    ::selection {
+        color: black;
+        background: gray;
+    }
+
     .why-grid {
         display: grid;
-        grid-template-columns: 48vw 48vw auto;
+        grid-template-columns: auto auto auto;
     }
 
     .why-grid-item {
@@ -342,20 +351,27 @@
         text-align: center;
         transition: 0.2s;
         cursor: pointer;
+        height: 363px;
+        width: 363px;
     }
-    .why-grid-item:hover{
+
+    .why-grid-item:hover {
         background-color: rgba(15, 12, 12, 0.5);
     }
-    .services-offer{
+
+    .services-offer {
         background-color: rgb(15, 12, 12);
         border-radius: 15px;
     }
-    .cut{
+
+    .cut {
         text-decoration: line-through;
     }
-    .m-11{
+
+    .m-11 {
         margin: 11px;
     }
+
     .hidden {
         opacity: 0;
         filter: blur(5px);
@@ -367,6 +383,9 @@
         filter: blur(0);
         transform: translateY(0);
         opacity: 1;
+    }
+    .wrap{
+        white-space: normal;
     }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -390,15 +409,15 @@
     </nav>
 
     <div class="section1 flex bg">
-        <h1 class="font-hero Bebas color-black hidden">
-            Web Design/Developement
-        </h1>
+        <h1 class="font-h1 Bebas color-black hidden">Web Design</h1>
+
+        
         <span class="why-grid">
             <div class="why-grid-item glow services-offer">
-                    <span class="color-black Bebas font-h2">Standard: </span>
-                    <span class="color-black"><span class="cut m-11">$5,000</span> $2,500 <b>50% OFF</b></span>
-                    <br>
-                    <br>
+                <span class="color-black Bebas font-h2">Standard: </span>
+                <span class="color-black"><span class="cut m-11">$5,000</span> $2,500 <b>50% OFF</b></span>
+                <br>
+                <br>
                 <ul style="list-style-type: '✔️';">
                     <li class="text-size-paragraph color-black">5-15 Pages.</li>
                     <li class="text-size-paragraph color-black">Opt in Forms.</li>
@@ -413,7 +432,7 @@
                 <h2 class="color-black Bebas font-h2">Advanced:</h2>
                 <h3 class=" mx-1 color-black">Lets Talk</h3>
                 <br>
-                    <a class="btn" type="button" href="#contact">Contact Us</a>
+                <a class="btn" type="button" href="#contact">Contact Us</a>
             </div>
 
         </span>
@@ -424,28 +443,28 @@
                 <span class="color-black"><span class="cut m-11">$1,000</span> $500 <b>50% OFF</b></span>
                 <h3 class=" mx-1 color-black">6 Months</h3>
                 <br>
-                    <a class="btn" type="button" href="#contact">Contact Us</a>
+                <a class="btn" type="button" href="#contact">Contact Us</a>
             </div>
             <div class="why-grid-item glow services-offer">
                 <h2 class="color-black Bebas font-h2">Maintenance:</h2>
                 <span class="color-black"><span class="cut m-11">$1,000</span> $450 <b>55% OFF</b></span>
                 <h3 class=" mx-1 color-black">12 Months</h3>
                 <br>
-                    <a class="btn" type="button" href="#contact">Contact Us</a>
+                <a class="btn" type="button" href="#contact">Contact Us</a>
             </div>
 
         </span>
     </div>
-    <br>    
-    <br>    
+    <br>
+    <br>
 
     <footer>
         &copy; 2023 Naratisers. All Rights Reserved
     </footer>
     <script defer>
-        const observer = new IntersectionObserver((entries) =>{
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting){
+                if (entry.isIntersecting) {
                     entry.target.classList.add('show')
                 }
             });
