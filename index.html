@@ -96,7 +96,8 @@
                 width: 100%;
                 box-sizing: border-box;
             }
-            .img{
+
+            .img {
                 max-width: calc(50%);
                 max-height: calc(50%);
             }
@@ -324,6 +325,7 @@
             transform: translateX(0);
             opacity: 1;
         }
+
         .up-hidden {
             opacity: 0;
             filter: blur(5px);
@@ -347,6 +349,18 @@
             color: black;
             background: gray;
         }
+
+        .circle {
+            --cursor-size: 20px;
+            position: fixed;
+            width: var(--cursor-size);
+            height: var(--cursor-size);
+            border: 1px solid #fff;
+            border-radius: 100%;
+            top: calc(-1 * var(--cursor-size) / 2);
+            left: calc(-1 * var(--cursor-size) / 2);
+            pointer-events: none;
+        }
     </style>
 </head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -354,6 +368,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <body>
+    <div class="circle"></div>
 
 
 
@@ -374,7 +389,8 @@
     </nav>
 
     <div class="section1 flex bg">
-        <h1 class="color-black Bebas font-hero mx-50 type-writer-text up-hidden">Tired of Waking up with no New Clients?</h1>
+        <h1 class="color-black Bebas font-hero mx-50 type-writer-text up-hidden">Tired of Waking up with no New Clients?
+        </h1>
         <p class="text-size-paragraph secondary-text mx-1">Its time to change that, with our Services Clients Would be
             begging
             to Work with You</p>
@@ -455,6 +471,8 @@
     </footer>
 
     <script defer>
+
+        // for the observer and animation stuff
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -473,6 +491,39 @@
         const upHiddenElements = document.querySelectorAll('.up-hidden')
         hiddenElements.forEach((el) => observer.observe(el));
         upHiddenElements.forEach((el) => upObserver.observe(el));
+        // it ends here
+
+        // setting up the cursor
+        const circleElement = document.querySelector('.circle');
+
+        const mouse = { x: 0, y: 0 },
+            circle = { x: 0, y: 0 };
+
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        // Speed factor
+        // Between 0 and 1 (0 = smoother, 1 = instant)
+        const speed = 0.15;
+
+        const tick = () => {
+            // (mouse.x - circle.x) calculates the difference between the current x-coordinate of the mouse and the current x-coordinate of the circle.
+            // (mouse.x - circle.x) * speed multiplies the difference by the speed factor, which determines how quickly the circle should move towards the mouse position
+            circle.x += (mouse.x - circle.x) * speed;
+            circle.y += (mouse.y - circle.y) * speed;
+
+            // Update circle element's position
+            circleElement.style.transform = `translate(${circle.x}px, ${circle.y}px)`;
+
+            // Call function on next frame
+            window.requestAnimationFrame(tick);
+        }
+
+        tick();
+
+        //it ends here
     </script>
 </body>
 

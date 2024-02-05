@@ -98,9 +98,10 @@
             width: 100%;
             box-sizing: border-box;
         }
-        .why-grid-item{
-          grid-column: 1;
-      }
+
+        .why-grid-item {
+            grid-column: 1;
+        }
 
     }
 
@@ -179,9 +180,11 @@
     .mx-1 {
         margin-top: 10px;
     }
+
     .font-h2 {
         font-size: 50px;
     }
+
     .font-h3 {
         font-size: 35px;
     }
@@ -191,7 +194,7 @@
         border-radius: 15px;
     }
 
-    .glow {        
+    .glow {
         border-color: rgb(15, 12, 12);
         box-shadow: 0 0 50px rgb(15, 12, 12);
     }
@@ -199,17 +202,17 @@
     @mixin white-gradient {
         background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
     }
-    
-    ::-moz-selection {
-            /* Code for Firefox */
-            color: black;
-            background: gray;
-        }
 
-        ::selection {
-            color: black;
-            background: gray;
-        }
+    ::-moz-selection {
+        /* Code for Firefox */
+        color: black;
+        background: gray;
+    }
+
+    ::selection {
+        color: black;
+        background: gray;
+    }
 
     /* $animationSpeed: 40s; */
 
@@ -343,19 +346,24 @@
         transition: 0.2s;
         cursor: pointer;
     }
-    .why-grid-item:hover{
+
+    .why-grid-item:hover {
         background-color: rgba(15, 12, 12, 0.5);
     }
-    .services-offer{
+
+    .services-offer {
         background-color: rgb(15, 12, 12);
         border-radius: 15px;
     }
-    .cut{
+
+    .cut {
         text-decoration: line-through;
     }
-    .m-11{
+
+    .m-11 {
         margin: 11px;
     }
+
     .hidden {
         opacity: 0;
         filter: blur(5px);
@@ -368,12 +376,26 @@
         transform: translateY(0);
         opacity: 1;
     }
+
+    .circle {
+        --cursor-size: 20px;
+        position: fixed;
+        width: var(--cursor-size);
+        height: var(--cursor-size);
+        border: 1px solid #fff;
+        border-radius: 100%;
+        top: calc(-1 * var(--cursor-size) / 2);
+        left: calc(-1 * var(--cursor-size) / 2);
+        pointer-events: none;
+    }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
+
 <body class="bg">
+    <div class="circle"></div>
     <nav class="nav bg">
         <span id="logo"><img id="img-logo" src="img/all white logo.png" alt="Logo"></span>
         <a class="nav-item" href="/">Home</a>
@@ -399,14 +421,14 @@
                 <span class="color-black"><span class="cut m-11">$1,000</span> $500 <b>50% OFF</b></span>
                 <h3 class=" mx-1 color-black">3 Months</h3>
                 <br>
-                    <a class="btn" type="button" href="#contact">Contact Us</a>
+                <a class="btn" type="button" href="#contact">Contact Us</a>
             </div>
             <div class="why-grid-item glow services-offer">
                 <h2 class="color-black Bebas font-h2">CRO:</h2>
                 <span class="color-black"><span class="cut m-11">$1,000</span> $450 <b>55% OFF</b></span>
                 <h3 class=" mx-1 color-black">6 Months</h3>
                 <br>
-                    <a class="btn" type="button" href="#contact">Contact Us</a>
+                <a class="btn" type="button" href="#contact">Contact Us</a>
             </div>
 
         </span>
@@ -417,15 +439,45 @@
         &copy; 2023 Naratisers. All Rights Reserved
     </footer>
     <script defer>
-        const observer = new IntersectionObserver((entries) =>{
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting){
+                if (entry.isIntersecting) {
                     entry.target.classList.add('show')
                 }
             });
         });
         const hiddenElements = document.querySelectorAll('.hidden')
         hiddenElements.forEach((el) => observer.observe(el));
+
+
+        const circleElement = document.querySelector('.circle');
+
+        const mouse = { x: 0, y: 0 },
+            circle = { x: 0, y: 0 };
+
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        // Speed factor
+        // Between 0 and 1 (0 = smoother, 1 = instant)
+        const speed = 0.15;
+
+        const tick = () => {
+            // (mouse.x - circle.x) calculates the difference between the current x-coordinate of the mouse and the current x-coordinate of the circle.
+            // (mouse.x - circle.x) * speed multiplies the difference by the speed factor, which determines how quickly the circle should move towards the mouse position
+            circle.x += (mouse.x - circle.x) * speed;
+            circle.y += (mouse.y - circle.y) * speed;
+
+            // Update circle element's position
+            circleElement.style.transform = `translate(${circle.x}px, ${circle.y}px)`;
+
+            // Call function on next frame
+            window.requestAnimationFrame(tick);
+        }
+
+        tick();
     </script>
 </body>
 

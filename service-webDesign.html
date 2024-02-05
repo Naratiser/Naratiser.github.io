@@ -384,8 +384,21 @@
         transform: translateY(0);
         opacity: 1;
     }
-    .wrap{
+
+    .wrap {
         white-space: normal;
+    }
+
+    .circle {
+        --cursor-size: 20px;
+        position: fixed;
+        width: var(--cursor-size);
+        height: var(--cursor-size);
+        border: 1px solid #fff;
+        border-radius: 100%;
+        top: calc(-1 * var(--cursor-size) / 2);
+        left: calc(-1 * var(--cursor-size) / 2);
+        pointer-events: none;
     }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -393,6 +406,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <body class="bg">
+    <div class="circle"></div>
     <nav class="nav bg">
         <span id="logo"><img id="img-logo" src="img/all white logo.png" alt="Logo"></span>
         <a class="nav-item" href="/">Home</a>
@@ -411,7 +425,7 @@
     <div class="section1 flex bg">
         <h1 class="font-h1 Bebas color-black hidden">Web Design</h1>
 
-        
+
         <span class="why-grid">
             <div class="why-grid-item glow services-offer">
                 <span class="color-black Bebas font-h2">Standard: </span>
@@ -471,6 +485,35 @@
         });
         const hiddenElements = document.querySelectorAll('.hidden')
         hiddenElements.forEach((el) => observer.observe(el));
+
+        const circleElement = document.querySelector('.circle');
+
+        const mouse = { x: 0, y: 0 },
+            circle = { x: 0, y: 0 };
+
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        // Speed factor
+        // Between 0 and 1 (0 = smoother, 1 = instant)
+        const speed = 0.15;
+
+        const tick = () => {
+            // (mouse.x - circle.x) calculates the difference between the current x-coordinate of the mouse and the current x-coordinate of the circle.
+            // (mouse.x - circle.x) * speed multiplies the difference by the speed factor, which determines how quickly the circle should move towards the mouse position
+            circle.x += (mouse.x - circle.x) * speed;
+            circle.y += (mouse.y - circle.y) * speed;
+
+            // Update circle element's position
+            circleElement.style.transform = `translate(${circle.x}px, ${circle.y}px)`;
+
+            // Call function on next frame
+            window.requestAnimationFrame(tick);
+        }
+
+        tick();
     </script>
 </body>
 
