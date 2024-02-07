@@ -142,6 +142,8 @@
             font-size: 20px;
         }
 
+
+
         .bg {
             /* background: #03045E; */
             background-color: black;
@@ -188,8 +190,12 @@
             padding: 25px;
         }
 
-        .border-radius {
+        .img{
             border-radius: 15px;
+        }
+        .img:hover{
+            cursor: crosshair;
+            transform: rotate(180deg);
         }
 
         .glow {
@@ -258,6 +264,13 @@
             overflow: hidden;
         }
 
+
+
+        .white-on-hover:hover {
+            cursor: grab;
+            background-color: white;
+            color: black;
+        }
 
 
 
@@ -403,24 +416,24 @@
 
 
     <div class="section2 flex bg">
-        <h1 class="Bebas color-black font-h1 hackerman" data-value="We Design Websites!">What do we provide?</h1>
+        <h1 class="Bebas color-black font-h1 hackerman white-on-hover" data-value="We Design Websites!">What do we provide?</h1>
         <p class="text-size-paragraph secondary-text mx-1">We make Websites for Dieticians' to Help them Attract more
             Clients</p>
         <a href="about.html" class="btn" type="button">Learn More!</a>
     </div>
     <div class="section3 flex bg">
-        <h1 class="font-h1 color-black Bebas">Who are We?</h1>
+        <h1 class="font-h1 color-black Bebas white-on-hover">Who are We?</h1>
         <p class="text-size-paragraph mx-1 secondary-text">We are a Web Design Agency for Nutritionists</p>
         <a href="service-webDesign.html" class="btn" type="button">Learn More!</a>
     </div>
     <div class="section4 flex bg">
-        <h1 class="Bebas font-h1 color-black">Examples</h1>
-        <img class="border-radius glow hidden img" src="/img/design.png" alt="Design">
+        <h1 class="Bebas font-h1 color-black white-on-hover">Examples</h1>
+        <img class="glow hidden img" src="/img/design.png" alt="Design">
         <br>
     </div>
     <br>
     <div class="section5">
-        <h1 class="flex Bebas font-h1 hackerman" data-value="The Platforms We Support:">The Platforms We Support:</h1>
+        <h1 class="flex Bebas font-h1 hackerman white-on-hover" data-value="The Platforms We Support:">The Platforms We Support:</h1>
 
         <div class="slider hidden">
             <div class="slide-track">

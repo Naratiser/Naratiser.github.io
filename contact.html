@@ -101,9 +101,10 @@
         .why-grid-item {
             grid-column: 1;
         }
-        .circle{
-                display: none;
-            }
+
+        .circle {
+            display: none;
+        }
 
     }
 
@@ -390,6 +391,18 @@
         left: calc(-1 * var(--cursor-size) / 2);
         pointer-events: none;
     }
+
+    ::-moz-selection {
+        /* Code for Firefox */
+        color: black;
+        background: gray;
+    }
+
+    ::selection {
+        color: black;
+        background: gray;
+    }
+
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -418,10 +431,14 @@
         <h1 class="Bebas color-black font-h1">You can Contact Us Here</h1>
         <!-- <h2 class="Bebas color-black font-h2">Socials:</h2> -->
         <span class="hidden">
-            <a href=""><img src="/img/facebook.png" alt="facebook"></a>
+            <a href="https://www.facebook.com/people/Naratisers/61556248198836/"><img src="/img/facebook.png" alt="facebook"></a>
             <a href="https://www.instagram.com/naratiser/"><img src="/img/instagram.png" alt="instagram"></a>
         </span>
         <br>
+
+        <br>
+
+
     </div>
 
     <footer>
@@ -503,7 +520,8 @@
         // Start the animation loop
         tick();
 
-        tick();
+
+
     </script>
 </body>
 
